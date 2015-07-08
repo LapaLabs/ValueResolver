@@ -1,5 +1,6 @@
 # ValueResolver
-A tiny library to typecasting and default value resolving.
+
+A tiny library for convenient typecasting and default value resolving.
 
 ## Installation
 
