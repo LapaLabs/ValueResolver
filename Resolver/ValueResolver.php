@@ -41,18 +41,18 @@ class ValueResolver
     {
         switch ($type) {
             case static::TYPE_STRING:
-                return (string) static::resolve($value, $default);
+                return (string)static::resolve((string)$value, $default);
 
             case static::TYPE_INT:
             case static::TYPE_INTEGER:
-                return (int) static::resolve($value, $default);
+                return (int)static::resolve((int)$value, $default);
 
             case static::TYPE_FLOAT:
-                return (float) static::resolve($value, $default);
+                return (float)static::resolve((float)$value, $default);
 
             case static::TYPE_BOOL:
             case static::TYPE_BOOLEAN:
-                return (bool) static::resolve($value, $default);
+                return (bool)static::resolve((bool)$value, $default);
 
             default:
                 throw new \InvalidArgumentException(sprintf(
