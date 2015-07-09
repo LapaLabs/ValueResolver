@@ -12,13 +12,14 @@ $ composer require lapalabs/value-resolver dev-master
 
 ## Usage
 
+> **NOTE:** The *scalar types* (`boolean`, `integer`, `float` and `string`) 
+are typecasting first and then resolving with default value if necessary,
+but *compound types* (`array` and `object`) are resolving first and then typecasting.
+
 ### Value Resolving
 
 ```php
 use LapaLabs\ValueResolver\Resolver\ValueResolver;
-
-$value1 = ;
-$value2 = ''; // empty string
 
 // Create resolver object in order to use available methods
 $resolver = new ValueResolver();
@@ -32,28 +33,28 @@ ValueResolver::resolve('', 'default'); // returns 'default' - because first argu
 
 ``` php
 // to string
-ValueResolver::string('6 apples');              // '6 apples'
-ValueResolver::string('6 apples', 'pears');     // '6 apples'
-ValueResolver::string('There are 6 apples');    // ''
-ValueResolver::string('A few apples', 'pears'); // pears
+ValueResolver::toString('6 apples');              // '6 apples'
+ValueResolver::toString('6 apples', 'pears');     // '6 apples'
+ValueResolver::toString('There are 6 apples');    // ''
+ValueResolver::toString('A few apples', 'pears'); // pears
 
 // to integer
-ValueResolver::integer('6 apples');           // 6
-ValueResolver::integer('6 apples', 1);        // 6
-ValueResolver::integer('There are 6 apples'); // 0
-ValueResolver::integer('A few apples', 1);    // 1
+ValueResolver::toInteger('6 apples');           // 6
+ValueResolver::toInteger('6 apples', 1);        // 6
+ValueResolver::toInteger('There are 6 apples'); // 0
+ValueResolver::toInteger('A few apples', 1);    // 1
 
 // to float
-ValueResolver::float('6 apples');           // 6.0
-ValueResolver::float('6 apples', 1.5);      // 6.0
-ValueResolver::float('There are 6 apples'); // 0.0
-ValueResolver::float('A few apples', 1.5);  // 1.5
+ValueResolver::toFloat('6 apples');           // 6.0
+ValueResolver::toFloat('6 apples', 1.5);      // 6.0
+ValueResolver::toFloat('There are 6 apples'); // 0.0
+ValueResolver::toFloat('A few apples', 1.5);  // 1.5
 
 // to boolean
-ValueResolver::boolean('1');                       // true
-ValueResolver::boolean('not empty string', false); // true
-ValueResolver::boolean(null);                      // false
-ValueResolver::boolean('', true);                  // true
+ValueResolver::toBoolean('1');                       // true
+ValueResolver::toBoolean('not empty string', false); // true
+ValueResolver::toBoolean(null);                      // false
+ValueResolver::toBoolean('', true);                  // true
 
 // to array
 ValueResolver::toArray([1, 2]);                          // [1, 2]
@@ -69,9 +70,9 @@ ValueResolver::toObject(null);                        // {}
 ValueResolver::toObject('', $defaultObject);          // {...} default object
 ValueResolver::toObject($someObject, $defaultObject); // {...} some object
 
-// or use low-level method
-ValueResolver::typecasting(ValueResolver::TYPE_INT, '6 apples', 1);     // 6
-ValueResolver::typecasting(ValueResolver::TYPE_STRING, 12345, 'Hello'); // '12345'
-ValueResolver::typecasting(ValueResolver::TYPE_FLOAT, '36.6');          // 36.6
-ValueResolver::typecasting(ValueResolver::TYPE_BOOL, null, true);       // true
+// or use low-level typecasting method
+ValueResolver::typecast(ValueResolver::TYPE_INT, '6 apples', 1);     // 6
+ValueResolver::typecast(ValueResolver::TYPE_STRING, 12345, 'Hello'); // '12345'
+ValueResolver::typecast(ValueResolver::TYPE_FLOAT, '36.6');          // 36.6
+ValueResolver::typecast(ValueResolver::TYPE_BOOL, null, true);       // true
 ```

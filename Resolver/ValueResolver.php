@@ -43,7 +43,7 @@ class ValueResolver
      * @param mixed $default = null
      * @return mixed
      */
-    public static function typecasting($type, $value, $default = null)
+    public static function typecast($type, $value, $default = null)
     {
         switch ($type) {
             case static::TYPE_STRING:
@@ -82,9 +82,9 @@ class ValueResolver
      * @param string $default = ''
      * @return string
      */
-    public static function string($value, $default = '')
+    public static function toString($value, $default = '')
     {
-        return static::typecasting(static::TYPE_STRING, $value, $default);
+        return static::typecast(static::TYPE_STRING, $value, $default);
     }
 
     /**
@@ -92,9 +92,9 @@ class ValueResolver
      * @param int $default = 0
      * @return int
      */
-    public static function integer($value, $default = 0)
+    public static function toInteger($value, $default = 0)
     {
-        return static::typecasting(static::TYPE_INTEGER, $value, $default);
+        return static::typecast(static::TYPE_INTEGER, $value, $default);
     }
 
     /**
@@ -102,9 +102,9 @@ class ValueResolver
      * @param float $default = 0.0
      * @return float
      */
-    public static function float($value, $default = 0.0)
+    public static function toFloat($value, $default = 0.0)
     {
-        return static::typecasting(static::TYPE_FLOAT, $value, $default);
+        return static::typecast(static::TYPE_FLOAT, $value, $default);
     }
 
     /**
@@ -112,9 +112,9 @@ class ValueResolver
      * @param bool $default = false
      * @return bool
      */
-    public static function boolean($value, $default = false)
+    public static function toBoolean($value, $default = false)
     {
-        return static::typecasting(static::TYPE_BOOLEAN, $value, $default);
+        return static::typecast(static::TYPE_BOOLEAN, $value, $default);
     }
 
     /**
@@ -124,13 +124,13 @@ class ValueResolver
      */
     public static function toArray($value, array $default = [])
     {
-        return static::typecasting(static::TYPE_ARRAY, $value, $default);
+        return static::typecast(static::TYPE_ARRAY, $value, $default);
     }
 
     /**
      * @param mixed $value
-     * @param object $default = new \stdClass
-     * @return object
+     * @param stdClass $default = new \stdClass
+     * @return stdClass
      */
     public static function toObject($value, stdClass $default = null)
     {
@@ -138,6 +138,6 @@ class ValueResolver
             $default = new stdClass();
         }
 
-        return static::typecasting(static::TYPE_OBJECT, $value, $default);
+        return static::typecast(static::TYPE_OBJECT, $value, $default);
     }
 }
