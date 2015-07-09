@@ -2,6 +2,8 @@
 
 A tiny library for convenient typecasting and default value resolving.
 
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/64a75cd4-acad-4248-a4eb-15f3bc95b8ac/mini.png)](https://insight.sensiolabs.com/projects/64a75cd4-acad-4248-a4eb-15f3bc95b8ac)
+
 ## Installation
 
 Install package to your project with `Composer`:
